@@ -1,0 +1,11 @@
+# Project exclude paths
+/flink-module/target/avro/
+/flink-module/target/scala-2.12/classes/
+/flink-module/target/streams/
+/flink-pipe/target/avro/
+/flink-pipe/target/scala-2.12/classes/
+/flink-pipe/target/streams/
+/project/project/target/
+/project/target/
+/target/
+/target/streams/

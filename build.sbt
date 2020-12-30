@@ -1,6 +1,7 @@
 
 ThisBuild / scalaVersion := Settings.ScalaVersion.It
-ThisBuild /runLocalKafka :=Some("localhost:9092")
+// ThisBuild /runLocalKafka :=Some("localhost:9092")
+
 val appName = "cloudflow-map-config"
 lazy val root = Project(id = appName, base = file("."))
   .settings(
@@ -21,13 +22,11 @@ lazy val pipeline = Project(id = ProjectName, base = file("flink-pipe"))
   .enablePlugins(CloudflowApplicationPlugin)
   .settings(
     blueprint := Some("blueprint.conf"),
-    //runLocalConfigFile := Some((baseDirectory.value / "src/main/resources/local.conf").getAbsolutePath)
     runLocalConfigFile := Some("flink-pipe/src/main/resources/local.conf"),
   )
-// runLocalConfigFile := Some("taxi-ride-pipeline/src/main/resources/local.conf"),
+
 lazy val flink = appModule("flink-module")
   .enablePlugins(CloudflowFlinkPlugin)
-  .settings(runLocalKafka :=Some("localhost:9092"))
   .settings(
     libraryDependencies ++=
       Dependencies.Logging.LoggingDependencies
@@ -36,7 +35,6 @@ lazy val flink = appModule("flink-module")
 def appModule(moduleID: String): Project = {
   Project(id = moduleID, base = file(moduleID))
     .settings(name := moduleID)
-    .settings(runLocalKafka :=Some("localhost:9092"))
     .settings(
       Settings.commonSettings,
       libraryDependencies ++=
