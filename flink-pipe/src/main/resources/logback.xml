@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration>
+  <logger name="akka" level="WARN" />
+  <logger name="akka.actor.ActorSystemImpl" level="WARN" />
+  <logger name="org.apache.kafka" level="WARN" />
+  <logger name="org.apache.kafka.clients.producer.ProducerConfig" level="WARN" />
+  <logger name="org.apache.kafka.clients.consumer.ConsumerConfig" level="WARN" />
+  <logger name="org.apache.kafka.common.utils.AppInfoParser" level="ERROR"/>
+  <logger name="org.apache.kafka.clients.NetworkClient" level="ERROR"/>
+  <logger name="org.apache.zookeeper" level="ERROR"/>
+  <logger name="org.apache.flink" level="WARN"/>
+  <logger name="com.datastax" level="WARN"/>
+  <logger name="kafka" level="ERROR"/>
+  <logger name="org.apache.flink.runtime.executiongraph" level="INFO"/>
+  <root level="DEBUG">
+    <appender name="CONSOLE" class="ch.qos.logback.core.ConsoleAppender">
+      <target>System.out</target>
+      <encoder>
+        <pattern>%-30(%d{dd-MM-yyyy;HH:mm:ss.SSS} [%thread]) %-5level %logger [%mdc] - %msg%n</pattern>
+      </encoder>
+    </appender>
+  </root>
+</configuration>
